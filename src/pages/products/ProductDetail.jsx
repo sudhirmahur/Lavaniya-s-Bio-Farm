@@ -1,7 +1,8 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { products } from "../utils/data";
-import SEO from "../components/SEO";
+import  { products } from "../../utils/data";
+import SEO from "../../components/SEO";
+
 
 export default function ProductDetail() {
   const { slug } = useParams();
