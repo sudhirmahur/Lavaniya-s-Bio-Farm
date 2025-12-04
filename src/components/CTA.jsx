@@ -29,7 +29,7 @@ const CTA = ({
           <div className="flex flex-wrap gap-4 justify-center">
             <button 
               onClick={() => navigate('/contact')}
-              className="bg-white text-primary px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition flex items-center gap-2 shadow-lg hover:shadow-xl"
+              className="bg-white text-primary px-8 py-4 rounded-full font-semibold hover:bg-gray-100 ho transition flex items-center gap-2 shadow-lg hover:shadow-x l"
             >
               <Phone className="w-5 h-5" />
               {primaryButtonText}
@@ -38,7 +38,7 @@ const CTA = ({
             {showSecondaryButton && (
               <button 
                 onClick={() => navigate('/products')}
-                className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-primary transition flex items-center gap-2"
+                className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:text-gray-700 hover:bg-white hover:text-primary transition flex items-center gap-2"
               >
                 {secondaryButtonText}
                 <ArrowRight className="w-5 h-5" />

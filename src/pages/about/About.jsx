@@ -5,6 +5,7 @@ import {
   ThumbsUp, Briefcase, BookOpen, Package, Truck, Clock, MessageCircle
 } from "lucide-react";
 import SEO from "../../components/SEO";
+import { Link } from "react-router-dom";
 
 export default function About() {
   const stats = [
@@ -430,14 +431,18 @@ export default function About() {
               </p>
 
               <div className="flex flex-wrap gap-4 justify-center">
+                <Link to="/contact">
                 <button className="bg-gradient-to-r from-green-600 to-green-700 text-white px-8 py-4 rounded-full font-semibold hover:from-green-700 hover:to-green-800 transition flex items-center gap-2 shadow-lg hover:shadow-xl">
                   <MessageCircle className="w-5 h-5" />
                   Contact Us Today
                 </button>
+                </Link>
+                <Link to="/products" >
                 <button className="border-2 border-green-600 text-green-700 px-8 py-4 rounded-full font-semibold hover:bg-green-50 transition flex items-center gap-2">
                   View Our Products
                   <ArrowRight className="w-5 h-5" />
                 </button>
+                </Link>
               </div>
             </div>
           </div>

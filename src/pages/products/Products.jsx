@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { ShoppingCart, Star, ChevronLeft, ChevronRight, Leaf, Package, TrendingUp, Sparkles, Award, Heart, Truck, Shield } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 // 50 Unique Products with Real Data
 const allProducts = [
@@ -426,16 +427,24 @@ export default function Products() {
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-3xl font-bold mb-4">Stay Updated with Fresh Offers!</h2>
           <p className="text-green-100 mb-6">Subscribe to our newsletter and get 15% off your first order</p>
-          <div className="flex gap-3 max-w-md mx-auto">
-            <input 
-              type="email" 
-              placeholder="Enter your email" 
-              className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-300"
-            />
-            <button className="bg-white text-green-700 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition shadow-lg">
-              Subscribe
-            </button>
-          </div>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            const mail = e.target.elements[0].value;
+            window.location.href = `mailto:${mail}?subject=Lavaniya%27s+Bio+Farm+Newsletter+Subscription`;
+          }}>
+            <div className="flex gap-3 max-w-md mx-auto">
+              <input 
+                type="email" 
+                placeholder="Enter your email" 
+                className="flex-1  px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-300 border border-gray-100"
+              />
+              
+              <button className="bg-white text-green-700 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition shadow-lg">
+                Mail Me..
+              </button>
+            </div>
+          </form>
+
         </div>
       </div>
 
@@ -445,14 +454,16 @@ export default function Products() {
           <h2 className="text-3xl font-bold mb-4">Need Help Choosing the Right Product?</h2>
           <p className="text-gray-400 mb-6 text-lg">Our mushroom experts are here to guide you!</p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <button className="bg-green-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-700 transition shadow-lg flex items-center gap-2">
+            <a href="https://wa.me/8477959291" className="bg-green-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-700 transition shadow-lg flex items-center gap-2">
               <Package className="w-5 h-5" />
               Shop Now
-            </button>
+            </a>
+            <Link to ="/contact" >
             <button className="bg-white text-gray-900 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition shadow-lg flex items-center gap-2">
               <Award className="w-5 h-5" />
               Contact Expert
             </button>
+            </Link>
           </div>
           
           <div className="mt-8 pt-8 border-t border-gray-800 text-gray-400 text-sm">

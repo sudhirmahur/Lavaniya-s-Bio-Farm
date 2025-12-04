@@ -1,4 +1,5 @@
 import { ArrowRight, Star, CheckCircle, Package } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   return (
@@ -54,10 +55,11 @@ const ProductCard = ({ product }) => {
           <div>
             <p className="text-2xl font-bold text-green-700">{product.price}</p>
           </div>
-          
+          <Link to={`/products`}>
           <button className="bg-green-700 text-white p-3 rounded-full hover:bg-green-800 transition group-hover:scale-110 shadow-lg hover:shadow-xl">
             <ArrowRight className="w-5 h-5" />
           </button>
+          </Link>
         </div>
       </div>
     </div>

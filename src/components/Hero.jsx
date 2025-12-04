@@ -10,6 +10,7 @@ import {
   Shield,
   Zap,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Hero = ({ setCurrentPage }) => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -150,19 +151,22 @@ const Hero = ({ setCurrentPage }) => {
               className="flex flex-col sm:flex-row gap-3 pt-2 animate-fadeIn"
               style={{ animationDelay: "0.6s" }}
             >
-              <button
-                onClick={() => setCurrentPage?.("products")}
-                className="group bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 md:px-8 py-3 md:py-3.5 rounded-xl font-semibold hover:from-green-700 hover:to-emerald-700 transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl transform hover:scale-105 text-sm md:text-base"
-              >
-                Shop Products
-                <ChevronRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
+              <Link to="/products">
+                <button
+                  className="group bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 md:px-8 py-3 md:py-3.5 rounded-xl font-semibold hover:from-green-700 hover:to-emerald-700 transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl transform hover:scale-105 text-sm md:text-base"
+                >
+                  Shop Products
+                  <ChevronRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </Link>
+               <Link to="/about">
               <button
                 onClick={() => setCurrentPage?.("training")}
                 className="group border-2 border-green-600 text-green-700 px-6 md:px-8 py-3 md:py-3.5 rounded-xl font-semibold hover:bg-green-600 hover:text-white transition-all shadow-md hover:shadow-xl transform hover:scale-105 text-sm md:text-base"
               >
                 Learn Cultivation
               </button>
+              </Link>
             </div>
 
             {/* Stats Grid */}

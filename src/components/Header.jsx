@@ -108,7 +108,7 @@ export default function Header() {
                 <Phone className="w-4 h-4" />
                 <span>Call Us</span>
               </a>
-              <button className="relative px-4 lg:px-6 py-2 lg:py-3 text-sm lg:text-base font-semibold text-white rounded-lg lg:rounded-xl overflow-hidden group shadow-lg shadow-green-600/30 hover:shadow-xl hover:shadow-green-600/40 transition-all duration-300">
+              <a href="https://wa.me/1234567890" className="relative px-4 lg:px-6 py-2 lg:py-3 text-sm lg:text-base font-semibold text-white rounded-lg lg:rounded-xl overflow-hidden group shadow-lg shadow-green-600/30 hover:shadow-xl hover:shadow-green-600/40 transition-all duration-300">
                 <span className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-600" />
                 <span className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-green-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="relative flex items-center gap-2">
@@ -116,7 +116,7 @@ export default function Header() {
                   <span className="hidden lg:inline">Shop Now</span>
                   <span className="lg:hidden">Shop</span>
                 </span>
-              </button>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}

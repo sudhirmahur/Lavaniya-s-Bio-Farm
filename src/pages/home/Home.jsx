@@ -2,6 +2,7 @@ import { ArrowRight, BookOpen, CheckCircle, ChevronRight,Package, Users,Shield, 
 import ProductCard from "../../components/ProductCard";
 import Hero from "../../components/Hero";
 import CTA from "../../components/CTA";
+import { Link } from "react-router-dom";
 
 const HomePage = ({ setCurrentPage }) => {
   const products = [
@@ -96,6 +97,7 @@ const HomePage = ({ setCurrentPage }) => {
           </div>
 
           <div className="text-center">
+            <Link to="/products" className="bg-green-700 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-800 transition inline-flex items-center gap-2">
             <button 
               onClick={() => setCurrentPage('products')}
               className="bg-green-700 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-800 transition inline-flex items-center gap-2"
@@ -103,6 +105,7 @@ const HomePage = ({ setCurrentPage }) => {
               View All Products
               <ArrowRight className="w-5 h-5" />
             </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -135,6 +138,7 @@ const HomePage = ({ setCurrentPage }) => {
                   </li>
                 ))}
               </ul>
+              <Link to="/about">
               <button 
                 onClick={() => setCurrentPage('about')}
                 className="mt-8 bg-green-700 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-800 transition inline-flex items-center gap-2"
@@ -142,6 +146,7 @@ const HomePage = ({ setCurrentPage }) => {
                 Learn More About Us
                 <ArrowRight className="w-5 h-5" />
               </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -156,6 +161,7 @@ const HomePage = ({ setCurrentPage }) => {
             <p className="text-lg text-gray-700 mb-8">
               Learn mushroom cultivation from experts. We offer comprehensive training for beginners and advanced growers, covering everything from setup to harvesting and marketing.
             </p>
+            <Link to="/training">
             <button 
               onClick={() => setCurrentPage('training')}
               className="bg-green-700 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-800 transition inline-flex items-center gap-2"
@@ -163,6 +169,7 @@ const HomePage = ({ setCurrentPage }) => {
               Explore Training Programs
               <ArrowRight className="w-5 h-5" />
             </button>
+            </Link>
           </div>
         </div>
       </section>
