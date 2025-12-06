@@ -1,66 +1,104 @@
 import React, { useState, useRef } from 'react';
 import { ShoppingCart, Star, ChevronLeft, ChevronRight, Leaf, Package, TrendingUp, Sparkles, Award, Heart, Truck, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import m16 from '../../assets/images/m-16.png';
+import m17 from '../../assets/images/m-17.png';
+import m18 from '../../assets/images/m-18.png';
+import m19 from '../../assets/images/m-19.png';
+import m20 from '../../assets/images/m-20.png';
+import m21 from '../../assets/images/m-21.png';
+import m22 from '../../assets/images/m-22.png';
+import m23 from '../../assets/images/m-23.png';
+import m24 from '../../assets/images/m24.png';
+import m25 from '../../assets/images/m25.png';
+import m26 from '../../assets/images/m-26.png';
+import m27 from '../../assets/images/m-27.png';
+import m28 from '../../assets/images/m-28.png';
+import m29 from '../../assets/images/m-29.png';
+import m30 from '../../assets/images/m-30.png';
+import m31 from '../../assets/images/m-31.png';
+import m32 from '../../assets/images/m-32.png';
+import m33 from '../../assets/images/m-33.png';
+import m34 from '../../assets/images/m-34.png';
+import m35 from '../../assets/images/m-35.png';
+import m36 from '../../assets/images/m-36.png';
+import m37 from '../../assets/images/m-37.png';
+import m38 from '../../assets/images/m-38.png';
+import m39 from '../../assets/images/m-39.png';
+import m40 from '../../assets/images/m-40.png';
+
+import m41 from '../../assets/images/m-41.png';
+import m42 from '../../assets/images/m-42.png';
+import m43 from '../../assets/images/m-43.png';
+import m44 from '../../assets/images/m-44.png';
+import m45 from '../../assets/images/m-45.png';
+import m46 from '../../assets/images/m-46.png';
+import m47 from '../../assets/images/m-47.png';
+import m48 from '../../assets/images/m-48.png';
+import m49 from '../../assets/images/m-49.png';
+
+
+
+
 
 // 50 Unique Products with Real Data
 const allProducts = [
   // Fresh Mushrooms (12 products)
-  { id: 1, name: 'Premium White Button Mushrooms', category: 'Fresh Mushrooms', price: 120, weight: '250g', rating: 4.8, reviews: 234, inStock: true, discount: 15, isOrganic: true, isTrending: true, image: 'https://images.unsplash.com/photo-1582281298055-e25b2a2c8c9d?w=400' },
-  { id: 2, name: 'Fresh Oyster Mushrooms', category: 'Fresh Mushrooms', price: 180, weight: '500g', rating: 4.9, reviews: 189, inStock: true, discount: null, isOrganic: true, isTrending: true, image: 'https://images.unsplash.com/photo-1584117640835-371c6da20a13?w=400' },
-  { id: 3, name: 'Shiitake Mushrooms Premium', category: 'Fresh Mushrooms', price: 250, weight: '300g', rating: 4.7, reviews: 156, inStock: true, discount: 20, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1603104978995-75da80e14629?w=400' },
-  { id: 4, name: 'Portobello Mushrooms Large', category: 'Fresh Mushrooms', price: 200, weight: '400g', rating: 4.6, reviews: 98, inStock: true, discount: null, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1590774992433-3f1e1d1c3c46?w=400' },
-  { id: 5, name: 'Enoki Mushrooms Fresh', category: 'Fresh Mushrooms', price: 160, weight: '200g', rating: 4.5, reviews: 145, inStock: false, discount: null, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1566419436649-f29c644f8e3f?w=400' },
-  { id: 6, name: 'Crimini Baby Bella Mushrooms', category: 'Fresh Mushrooms', price: 140, weight: '350g', rating: 4.8, reviews: 201, inStock: true, discount: 10, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1611078489935-0cb964de46d6?w=400' },
-  { id: 7, name: 'King Oyster Mushrooms Jumbo', category: 'Fresh Mushrooms', price: 220, weight: '300g', rating: 4.9, reviews: 167, inStock: true, discount: null, isOrganic: true, isTrending: true, image: 'https://images.unsplash.com/photo-1595261964038-bcc18f4cb107?w=400' },
-  { id: 8, name: 'Lion\'s Mane Fresh', category: 'Fresh Mushrooms', price: 280, weight: '250g', rating: 4.9, reviews: 89, inStock: true, discount: 15, isOrganic: true, isTrending: true, image: 'https://images.unsplash.com/photo-1610466025666-37d1e2e0e5e5?w=400' },
-  { id: 9, name: 'Chanterelle Mushrooms Wild', category: 'Fresh Mushrooms', price: 350, weight: '200g', rating: 5.0, reviews: 45, inStock: true, discount: null, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1594756202469-9ff9799b2e4e?w=400' },
-  { id: 10, name: 'Mixed Exotic Mushrooms Pack', category: 'Fresh Mushrooms', price: 300, weight: '500g', rating: 4.8, reviews: 178, inStock: true, discount: 25, isOrganic: true, isTrending: true, image: 'https://images.unsplash.com/photo-1580484730783-c7ef54e1c85e?w=400' },
-  { id: 11, name: 'Organic White Button Family Pack', category: 'Fresh Mushrooms', price: 190, weight: '1kg', rating: 4.7, reviews: 267, inStock: true, discount: null, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1582281298055-e25b2a2c8c9d?w=400' },
-  { id: 12, name: 'Golden Oyster Mushrooms', category: 'Fresh Mushrooms', price: 210, weight: '300g', rating: 4.6, reviews: 112, inStock: true, discount: null, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1584117640835-371c6da20a13?w=400' },
-
+  { id: 1, name: 'Premium White Button Mushrooms', category: 'Fresh Mushrooms', price: 120, weight: '250g', rating: 4.8, reviews: 234, inStock: true, discount: 15, isOrganic: true, isTrending: true, image: m16 },
+  { id: 2, name: 'Fresh Oyster Mushrooms', category: 'Fresh Mushrooms', price: 180, weight: '500g', rating: 4.9, reviews: 189, inStock: true, discount: null, isOrganic: true, isTrending: true, image: m17 },
+  { id: 3, name: 'Shiitake Mushrooms Premium', category: 'Fresh Mushrooms', price: 250, weight: '300g', rating: 4.7, reviews: 156, inStock: true, discount: 20, isOrganic: true, isTrending: false, image: m18 },
+  { id: 4, name: 'Portobello Mushrooms Large', category: 'Fresh Mushrooms', price: 200, weight: '400g', rating: 4.6, reviews: 98, inStock: true, discount: null, isOrganic: true, isTrending: false, image: m19 },
+  { id: 5, name: 'Enoki Mushrooms Fresh', category: 'Fresh Mushrooms', price: 160, weight: '200g', rating: 4.5, reviews: 145, inStock: false, discount: null, isOrganic: true, isTrending: false, image: m20},
+  { id: 6, name: 'Crimini Baby Bella Mushrooms', category: 'Fresh Mushrooms', price: 140, weight: '350g', rating: 4.8, reviews: 201, inStock: true, discount: 10, isOrganic: true, isTrending: false, image: m21 },
+  { id: 7, name: 'King Oyster Mushrooms Jumbo', category: 'Fresh Mushrooms', price: 220, weight: '300g', rating: 4.9, reviews: 167, inStock: true, discount: null, isOrganic: true, isTrending: true, image: m22},
+  { id: 8, name: 'Lion\'s Mane Fresh', category: 'Fresh Mushrooms', price: 280, weight: '250g', rating: 4.9, reviews: 89, inStock: true, discount: 15, isOrganic: true, isTrending: true, image: m23 },
+  { id: 9, name: 'Chanterelle Mushrooms Wild', category: 'Fresh Mushrooms', price: 350, weight: '200g', rating: 5.0, reviews: 45, inStock: true, discount: null, isOrganic: true, isTrending: false, image: m24 },
+  { id: 10, name: 'Mixed Exotic Mushrooms Pack', category: 'Fresh Mushrooms', price: 300, weight: '500g', rating: 4.8, reviews: 178, inStock: true, discount: 25, isOrganic: true, isTrending: true, image: m16 },
+  { id: 11, name: 'Organic White Button Family Pack', category: 'Fresh Mushrooms', price: 190, weight: '1kg', rating: 4.7, reviews: 267, inStock: true, discount: null, isOrganic: true, isTrending: false, image: m17 },
+  { id: 12, name: 'Golden Oyster Mushrooms', category: 'Fresh Mushrooms', price: 210, weight: '300g', rating: 4.6, reviews: 112, inStock: true, discount: null, isOrganic: true, isTrending: false, image: m18 },
   // Dried Mushrooms (10 products)
-  { id: 13, name: 'Dried Porcini Mushrooms Premium', category: 'Dried Mushrooms', price: 450, weight: '100g', rating: 4.9, reviews: 234, inStock: true, discount: null, isOrganic: true, isTrending: true, image: 'https://images.unsplash.com/photo-1604520377813-c0c9e2f6b9e8?w=400' },
-  { id: 14, name: 'Dried Shiitake Sliced', category: 'Dried Mushrooms', price: 380, weight: '150g', rating: 4.8, reviews: 198, inStock: true, discount: 20, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1603104978995-75da80e14629?w=400' },
-  { id: 15, name: 'Dried Morel Mushrooms Wild', category: 'Dried Mushrooms', price: 650, weight: '50g', rating: 5.0, reviews: 67, inStock: true, discount: null, isOrganic: true, isTrending: true, image: 'https://images.unsplash.com/photo-1595261342326-c6b5f4d7bd20?w=400' },
-  { id: 16, name: 'Dried Oyster Mushrooms', category: 'Dried Mushrooms', price: 320, weight: '100g', rating: 4.7, reviews: 145, inStock: true, discount: 15, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1584117640835-371c6da20a13?w=400' },
-  { id: 17, name: 'Mixed Dried Mushrooms Gourmet', category: 'Dried Mushrooms', price: 420, weight: '200g', rating: 4.8, reviews: 156, inStock: true, discount: null, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1580484730783-c7ef54e1c85e?w=400' },
-  { id: 18, name: 'Dried Black Fungus Premium', category: 'Dried Mushrooms', price: 280, weight: '100g', rating: 4.6, reviews: 89, inStock: false, discount: null, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1598662957477-1e8991c1d900?w=400' },
-  { id: 19, name: 'Dried Chanterelle Pieces', category: 'Dried Mushrooms', price: 520, weight: '75g', rating: 4.9, reviews: 78, inStock: true, discount: null, isOrganic: true, isTrending: true, image: 'https://images.unsplash.com/photo-1594756202469-9ff9799b2e4e?w=400' },
-  { id: 20, name: 'Dried Lion\'s Mane Slices', category: 'Dried Mushrooms', price: 480, weight: '100g', rating: 4.9, reviews: 134, inStock: true, discount: 10, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1610466025666-37d1e2e0e5e5?w=400' },
-  { id: 21, name: 'Dried Wood Ear Mushrooms', category: 'Dried Mushrooms', price: 260, weight: '150g', rating: 4.5, reviews: 112, inStock: true, discount: null, isOrganic: false, isTrending: false, image: 'https://images.unsplash.com/photo-1576382262775-ee6eee2e7b1e?w=400' },
-  { id: 22, name: 'Dried Button Mushroom Powder', category: 'Dried Mushrooms', price: 340, weight: '200g', rating: 4.7, reviews: 201, inStock: true, discount: 15, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1582281298055-e25b2a2c8c9d?w=400' },
+  { id: 13, name: 'Dried Porcini Mushrooms Premium', category: 'Dried Mushrooms', price: 450, weight: '100g', rating: 4.9, reviews: 234, inStock: true, discount: null, isOrganic: true, isTrending: true, image: m25 },
+  { id: 14, name: 'Dried Shiitake Sliced', category: 'Dried Mushrooms', price: 380, weight: '150g', rating: 4.8, reviews: 198, inStock: true, discount: 20, isOrganic: true, isTrending: false, image: m26 },
+  { id: 15, name: 'Dried Morel Mushrooms Wild', category: 'Dried Mushrooms', price: 650, weight: '50g', rating: 5.0, reviews: 67, inStock: true, discount: null, isOrganic: true, isTrending: true, image: m27 },
+  { id: 16, name: 'Dried Oyster Mushrooms', category: 'Dried Mushrooms', price: 320, weight: '100g', rating: 4.7, reviews: 145, inStock: true, discount: 15, isOrganic: true, isTrending: false, image: m28 },
+  { id: 17, name: 'Mixed Dried Mushrooms Gourmet', category: 'Dried Mushrooms', price: 420, weight: '200g', rating: 4.8, reviews: 156, inStock: true, discount: null, isOrganic: true, isTrending: false, image: m29 },
+  { id: 18, name: 'Dried Black Fungus Premium', category: 'Dried Mushrooms', price: 280, weight: '100g', rating: 4.6, reviews: 89, inStock: false, discount: null, isOrganic: true, isTrending: false, image:  m30 },
+  { id: 19, name: 'Dried Chanterelle Pieces', category: 'Dried Mushrooms', price: 520, weight: '75g', rating: 4.9, reviews: 78, inStock: true, discount: null, isOrganic: true, isTrending: true, image:  m25},
+  { id: 20, name: 'Dried Lion\'s Mane Slices', category: 'Dried Mushrooms', price: 480, weight: '100g', rating: 4.9, reviews: 134, inStock: true, discount: 10, isOrganic: true, isTrending: false, image: m26 },
+  { id: 21, name: 'Dried Wood Ear Mushrooms', category: 'Dried Mushrooms', price: 260, weight: '150g', rating: 4.5, reviews: 112, inStock: true, discount: null, isOrganic: false, isTrending: false, image: m27  },
+  { id: 22, name: 'Dried Button Mushroom Powder', category: 'Dried Mushrooms', price: 340, weight: '200g', rating: 4.7, reviews: 201, inStock: true, discount: 15, isOrganic: true, isTrending: false, image: m28 },
 
   // Grow Bags (10 products)
-  { id: 23, name: 'Oyster Mushroom Grow Kit Deluxe', category: 'Grow Bags', price: 550, weight: 'Ready-to-Grow', rating: 4.9, reviews: 312, inStock: true, discount: 20, isOrganic: true, isTrending: true, image: 'https://images.unsplash.com/photo-1584117640835-371c6da20a13?w=400' },
-  { id: 24, name: 'Shiitake Home Growing Kit', category: 'Grow Bags', price: 600, weight: 'Premium Kit', rating: 4.8, reviews: 267, inStock: true, discount: null, isOrganic: true, isTrending: true, image: 'https://images.unsplash.com/photo-1603104978995-75da80e14629?w=400' },
-  { id: 25, name: 'Lion\'s Mane Cultivation Kit Pro', category: 'Grow Bags', price: 680, weight: 'Deluxe Kit', rating: 4.9, reviews: 189, inStock: true, discount: 15, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1610466025666-37d1e2e0e5e5?w=400' },
-  { id: 26, name: 'Button Mushroom Starter Kit', category: 'Grow Bags', price: 450, weight: 'Ready-to-Grow', rating: 4.7, reviews: 234, inStock: true, discount: null, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1582281298055-e25b2a2c8c9d?w=400' },
-  { id: 27, name: 'Reishi Medicinal Grow Kit', category: 'Grow Bags', price: 720, weight: 'Premium Kit', rating: 4.8, reviews: 145, inStock: true, discount: 25, isOrganic: true, isTrending: true, image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400' },
-  { id: 28, name: 'Pink Oyster Growing Kit', category: 'Grow Bags', price: 520, weight: 'Ready-to-Grow', rating: 4.6, reviews: 178, inStock: false, discount: null, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1595261342326-c6b5f4d7bd20?w=400' },
-  { id: 29, name: 'King Oyster Complete Kit', category: 'Grow Bags', price: 580, weight: 'Deluxe Kit', rating: 4.8, reviews: 156, inStock: true, discount: null, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1595261964038-bcc18f4cb107?w=400' },
-  { id: 30, name: 'Multi-Variety Growing Pack', category: 'Grow Bags', price: 850, weight: 'Premium Kit', rating: 4.9, reviews: 98, inStock: true, discount: 30, isOrganic: true, isTrending: true, image: 'https://images.unsplash.com/photo-1580484730783-c7ef54e1c85e?w=400' },
-  { id: 31, name: 'Beginner Oyster Grow Bag', category: 'Grow Bags', price: 380, weight: 'Ready-to-Grow', rating: 4.7, reviews: 289, inStock: true, discount: null, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1584117640835-371c6da20a13?w=400' },
-  { id: 32, name: 'Cordyceps Cultivation Kit Pro', category: 'Grow Bags', price: 920, weight: 'Deluxe Kit', rating: 5.0, reviews: 67, inStock: true, discount: null, isOrganic: true, isTrending: true, image: 'https://images.unsplash.com/photo-1587049332474-5da2a0c1463f?w=400' },
+  { id: 23, name: 'Oyster Mushroom Grow Kit Deluxe', category: 'Grow Bags', price: 550, weight: 'Ready-to-Grow', rating: 4.9, reviews: 312, inStock: true, discount: 20, isOrganic: true, isTrending: true, image: m31 },
+  { id: 24, name: 'Shiitake Home Growing Kit', category: 'Grow Bags', price: 600, weight: 'Premium Kit', rating: 4.8, reviews: 267, inStock: true, discount: null, isOrganic: true, isTrending: true, image: m32 },
+  { id: 25, name: 'Lion\'s Mane Cultivation Kit Pro', category: 'Grow Bags', price: 680, weight: 'Deluxe Kit', rating: 4.9, reviews: 189, inStock: true, discount: 15, isOrganic: true, isTrending: false, image: m33 },
+  { id: 26, name: 'Button Mushroom Starter Kit', category: 'Grow Bags', price: 450, weight: 'Ready-to-Grow', rating: 4.7, reviews: 234, inStock: true, discount: null, isOrganic: true, isTrending: false, image: m34 },
+  { id: 27, name: 'Reishi Medicinal Grow Kit', category: 'Grow Bags', price: 720, weight: 'Premium Kit', rating: 4.8, reviews: 145, inStock: true, discount: 25, isOrganic: true, isTrending: true, image: m35 },
+  { id: 28, name: 'Pink Oyster Growing Kit', category: 'Grow Bags', price: 520, weight: 'Ready-to-Grow', rating: 4.6, reviews: 178, inStock: false, discount: null, isOrganic: true, isTrending: false, image: m36 },
+  { id: 29, name: 'King Oyster Complete Kit', category: 'Grow Bags', price: 580, weight: 'Deluxe Kit', rating: 4.8, reviews: 156, inStock: true, discount: null, isOrganic: true, isTrending: false, image: m37 },
+  { id: 30, name: 'Multi-Variety Growing Pack', category: 'Grow Bags', price: 850, weight: 'Premium Kit', rating: 4.9, reviews: 98, inStock: true, discount: 30, isOrganic: true, isTrending: true, image: m38 },
+  { id: 31, name: 'Beginner Oyster Grow Bag', category: 'Grow Bags', price: 380, weight: 'Ready-to-Grow', rating: 4.7, reviews: 289, inStock: true, discount: null, isOrganic: true, isTrending: false, image: m39 },
+  { id: 32, name: 'Cordyceps Cultivation Kit Pro', category: 'Grow Bags', price: 920, weight: 'Deluxe Kit', rating: 5.0, reviews: 67, inStock: true, discount: null, isOrganic: true, isTrending: true, image: m40},
 
   // Spawn (9 products)
-  { id: 33, name: 'Oyster Mushroom Spawn Premium', category: 'Spawn', price: 320, weight: '1kg', rating: 4.8, reviews: 245, inStock: true, discount: 15, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1584117640835-371c6da20a13?w=400' },
-  { id: 34, name: 'Button Mushroom Spawn Grade A', category: 'Spawn', price: 280, weight: '2kg', rating: 4.7, reviews: 312, inStock: true, discount: null, isOrganic: true, isTrending: true, image: 'https://images.unsplash.com/photo-1582281298055-e25b2a2c8c9d?w=400' },
-  { id: 35, name: 'Shiitake Spawn Professional', category: 'Spawn', price: 380, weight: '1kg', rating: 4.9, reviews: 178, inStock: true, discount: 20, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1603104978995-75da80e14629?w=400' },
-  { id: 36, name: 'Portobello Spawn Bulk Pack', category: 'Spawn', price: 450, weight: '2kg', rating: 4.6, reviews: 134, inStock: true, discount: null, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1590774992433-3f1e1d1c3c46?w=400' },
-  { id: 37, name: 'Lion\'s Mane Spawn Premium', category: 'Spawn', price: 520, weight: '500g', rating: 4.9, reviews: 89, inStock: true, discount: 10, isOrganic: true, isTrending: true, image: 'https://images.unsplash.com/photo-1610466025666-37d1e2e0e5e5?w=400' },
-  { id: 38, name: 'King Oyster Spawn Commercial', category: 'Spawn', price: 420, weight: '1kg', rating: 4.8, reviews: 156, inStock: false, discount: null, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1595261964038-bcc18f4cb107?w=400' },
-  { id: 39, name: 'Reishi Spawn Medicinal Grade', category: 'Spawn', price: 580, weight: '500g', rating: 4.9, reviews: 98, inStock: true, discount: 15, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400' },
-  { id: 40, name: 'Mixed Oyster Spawn Variety Pack', category: 'Spawn', price: 480, weight: '1.5kg', rating: 4.7, reviews: 201, inStock: true, discount: null, isOrganic: true, isTrending: false, image: 'https://images.unsplash.com/photo-1595261342326-c6b5f4d7bd20?w=400' },
-  { id: 41, name: 'Enoki Spawn Professional', category: 'Spawn', price: 350, weight: '1kg', rating: 4.6, reviews: 123, inStock: true, discount: null, isOrganic: false, isTrending: false, image: 'https://images.unsplash.com/photo-1566419436649-f29c644f8e3f?w=400' },
+  { id: 33, name: 'Oyster Mushroom Spawn Premium', category: 'Spawn', price: 320, weight: '1kg', rating: 4.8, reviews: 245, inStock: true, discount: 15, isOrganic: true, isTrending: false, image:m44 },
+  { id: 34, name: 'Button Mushroom Spawn Grade A', category: 'Spawn', price: 280, weight: '2kg', rating: 4.7, reviews: 312, inStock: true, discount: null, isOrganic: true, isTrending: true, image: m45 },
+  { id: 35, name: 'Shiitake Spawn Professional', category: 'Spawn', price: 380, weight: '1kg', rating: 4.9, reviews: 178, inStock: true, discount: 20, isOrganic: true, isTrending: false, image: m46 },
+  { id: 36, name: 'Portobello Spawn Bulk Pack', category: 'Spawn', price: 450, weight: '2kg', rating: 4.6, reviews: 134, inStock: true, discount: null, isOrganic: true, isTrending: false, image: m47 },
+  { id: 37, name: 'Lion\'s Mane Spawn Premium', category: 'Spawn', price: 520, weight: '500g', rating: 4.9, reviews: 89, inStock: true, discount: 10, isOrganic: true, isTrending: true, image: m48 },
+  { id: 38, name: 'King Oyster Spawn Commercial', category: 'Spawn', price: 420, weight: '1kg', rating: 4.8, reviews: 156, inStock: false, discount: null, isOrganic: true, isTrending: false, image: m49 },
+  { id: 39, name: 'Reishi Spawn Medicinal Grade', category: 'Spawn', price: 580, weight: '500g', rating: 4.9, reviews: 98, inStock: true, discount: 15, isOrganic: true, isTrending: false, image: m47 },
+  { id: 40, name: 'Mixed Oyster Spawn Variety Pack', category: 'Spawn', price: 480, weight: '1.5kg', rating: 4.7, reviews: 201, inStock: true, discount: null, isOrganic: true, isTrending: false, image:m46 },
+  { id: 41, name: 'Enoki Spawn Professional', category: 'Spawn', price: 350, weight: '1kg', rating: 4.6, reviews: 123, inStock: true, discount: null, isOrganic: false, isTrending: false, image: m44 },
 
   // Training Kits (9 products)
-  { id: 42, name: 'Beginner Mushroom Cultivation Course', category: 'Training Kits', price: 650, weight: 'Starter Pack', rating: 4.9, reviews: 289, inStock: true, discount: 25, isOrganic: false, isTrending: true, image: 'https://images.unsplash.com/photo-1516534775068-ba3e7458af70?w=400' },
-  { id: 43, name: 'Advanced Cultivation Training Kit', category: 'Training Kits', price: 850, weight: 'Full Course', rating: 4.8, reviews: 167, inStock: true, discount: null, isOrganic: false, isTrending: true, image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400' },
-  { id: 44, name: 'Professional Mushroom Farming Course', category: 'Training Kits', price: 1200, weight: 'Master Kit', rating: 5.0, reviews: 78, inStock: true, discount: 20, isOrganic: false, isTrending: false, image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=400' },
-  { id: 45, name: 'Complete Home Growing Guide', category: 'Training Kits', price: 580, weight: 'Starter Pack', rating: 4.7, reviews: 234, inStock: true, discount: 15, isOrganic: false, isTrending: false, image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400' },
-  { id: 46, name: 'Commercial Scale Training Program', category: 'Training Kits', price: 1450, weight: 'Master Kit', rating: 4.9, reviews: 45, inStock: true, discount: null, isOrganic: false, isTrending: true, image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400' },
-  { id: 47, name: 'Specialty Mushroom Growing Course', category: 'Training Kits', price: 920, weight: 'Full Course', rating: 4.8, reviews: 112, inStock: true, discount: 10, isOrganic: false, isTrending: false, image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400' },
-  { id: 48, name: 'Medicinal Mushroom Cultivation Kit', category: 'Training Kits', price: 1080, weight: 'Full Course', rating: 4.9, reviews: 89, inStock: false, discount: null, isOrganic: false, isTrending: false, image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400' },
+  { id: 42, name: 'Beginner Mushroom Cultivation Course', category: 'Training Kits', price: 650, weight: 'Starter Pack', rating: 4.9, reviews: 289, inStock: true, discount: 25, isOrganic: false, isTrending: true, image: m41 },
+  { id: 43, name: 'Advanced Cultivation Training Kit', category: 'Training Kits', price: 850, weight: 'Full Course', rating: 4.8, reviews: 167, inStock: true, discount: null, isOrganic: false, isTrending: true, image: m42 },
+  { id: 44, name: 'Professional Mushroom Farming Course', category: 'Training Kits', price: 1200, weight: 'Master Kit', rating: 5.0, reviews: 78, inStock: true, discount: 20, isOrganic: false, isTrending: false, image: m43 },
+  { id: 45, name: 'Complete Home Growing Guide', category: 'Training Kits', price: 580, weight: 'Starter Pack', rating: 4.7, reviews: 234, inStock: true, discount: 15, isOrganic: false, isTrending: false, image: m41 },
+  { id: 46, name: 'Commercial Scale Training Program', category: 'Training Kits', price: 1450, weight: 'Master Kit', rating: 4.9, reviews: 45, inStock: true, discount: null, isOrganic: false, isTrending: true, image: m42 },
+  { id: 47, name: 'Specialty Mushroom Growing Course', category: 'Training Kits', price: 920, weight: 'Full Course', rating: 4.8, reviews: 112, inStock: true, discount: 10, isOrganic: false, isTrending: false, image: m43 },
+  { id: 48, name: 'Medicinal Mushroom Cultivation Kit', category: 'Training Kits', price: 1080, weight: 'Full Course', rating: 4.9, reviews: 89, inStock: false, discount: null, isOrganic: false, isTrending: false, image: m41 },
   { id: 49, name: 'Family Mushroom Growing Workshop', category: 'Training Kits', price: 480, weight: 'Starter Pack', rating: 4.6, reviews: 198, inStock: true, discount: 20, isOrganic: false, isTrending: false, image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400' },
   { id: 50, name: 'Entrepreneurship in Mushroom Farming', category: 'Training Kits', price: 1650, weight: 'Master Kit', rating: 5.0, reviews: 56, inStock: true, discount: 30, isOrganic: false, isTrending: true, image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400' }
 ];

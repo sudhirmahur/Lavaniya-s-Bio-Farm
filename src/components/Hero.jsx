@@ -11,17 +11,23 @@ import {
   Zap,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import m30 from "../assets/images/m-30.png";
+import m32 from "../assets/images/m-32.png";
+import m33 from "../assets/images/m-33.png";
+import m15 from "../assets/images/m-15.png";
+import m17 from "../assets/images/m-17.png";
+
 
 const Hero = ({ setCurrentPage }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
   const images = [
-    "https://images.unsplash.com/photo-1628773822503-930a7eaecf80?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1614971195389-731954c46fcd?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1595599512948-b9831e5fc11c?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1509358271058-acd22cc93898?w=800&h=600&fit=crop",
+    m30,
+    m32,
+    m33,
+    m15,
+    m17,
   ];
 
   const stats = [

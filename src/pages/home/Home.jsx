@@ -3,6 +3,12 @@ import ProductCard from "../../components/ProductCard";
 import Hero from "../../components/Hero";
 import CTA from "../../components/CTA";
 import { Link } from "react-router-dom";
+import m11 from "../../assets/images/m-11.png";
+import m12 from "../../assets/images/m-12.png";
+import m33 from "../../assets/images/m-33.png";
+import m15 from "../../assets/images/m-15.png";
+
+
 
 const HomePage = ({ setCurrentPage }) => {
   const products = [
@@ -11,7 +17,7 @@ const HomePage = ({ setCurrentPage }) => {
       name: "Fresh Oyster Mushrooms",
       category: "Fresh",
       price: "₹180/kg",
-      image: "https://images.unsplash.com/photo-1628773822503-930a7eaecf80?w=400&h=300&fit=crop",
+      image: m11,
       shortDescription: "Premium quality fresh oyster mushrooms, harvested daily for maximum freshness and nutrition.",
       inStock: true
     },
@@ -20,7 +26,7 @@ const HomePage = ({ setCurrentPage }) => {
       name: "Mushroom Spawn",
       category: "Cultivation",
       price: "₹60/kg",
-      image: "https://images.unsplash.com/photo-1614180042778-5a6b6b4a0b8f?w=400&h=300&fit=crop",
+      image: m12,
       shortDescription: "High-quality spawn for efficient mushroom cultivation with excellent colonization rates.",
       inStock: true
     },
@@ -29,7 +35,7 @@ const HomePage = ({ setCurrentPage }) => {
       name: "Ready Grow Bags",
       category: "Cultivation",
       price: "₹120/bag",
-      image: "https://images.unsplash.com/photo-1584949091598-c31daaaa4aa9?w=400&h=300&fit=crop",
+      image: m33,
       shortDescription: "Ready-to-use grow bags with substrate, perfect for beginners and commercial growers.",
       inStock: true
     }
@@ -116,7 +122,7 @@ const HomePage = ({ setCurrentPage }) => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <img 
-                src="https://images.unsplash.com/photo-1608114466159-6b5190b8d5e1?w=600&h=400&fit=crop"
+                src={m15}
                 alt="Mushroom Farm"
                 className="rounded-2xl shadow-xl"
               />
